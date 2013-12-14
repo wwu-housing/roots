@@ -11,6 +11,17 @@
  *   <li class="menu-sample-page"><a href="/sample-page/">Sample Page</a></li>
  */
 class Roots_Nav_Walker extends Walker_Nav_Menu {
+  private $cpt; // Boolean, is current post a custom post type.
+  private $archive; // Stores the current active page url.
+
+  function __construct() {
+    add_filter('nav_menu_css_class', array($this, 'css_classes'), 10, 2);
+    add_filter('nav_menu_item_id', '__return_null');
+    $cpt           = get_post_type();
+    $this->cpt     = in_array($cpt, get_post_types(array('_builtin' => false)));
+    $this->archive = get_post_type_archive_link($cpt);
+  }
+
   function check_current($classes) {
     return preg_match('/(current[-_])|active|dropdown/', $classes);
   }
@@ -45,33 +56,58 @@ class Roots_Nav_Walker extends Walker_Nav_Menu {
       $element->classes[] = 'dropdown';
     }
 
+    $element->is_active = strpos($this->active, $element->url);
+
+    if ($element->is_active) {
+      $element->classes[] = 'active';
+    }
+
     parent::display_element($element, $children_elements, $max_depth, $depth, $args, $output);
   }
+
+  public function css_classes($classes, $item) {
+    $slug = sanitize_title($item->title);
+
+    if ($this->cpt) {
+      $classes = str_replace('current_page_parent', '', $classes);
+
+      if (roots_url_compare($this->archive, $item->url)) {
+        $classes[] = 'active';
+      }
+    }
+
+    $classes = preg_replace('/(current(-menu-|[-_]page[-_])(item|parent|ancestor))/', 'active', $classes);
+    $classes = preg_replace('/^((menu|page)[-_\w+]+)+/', '', $classes);
+
+    $classes[] = 'menu-' . $slug;
+
+    $classes = array_unique($classes);
+
+    return array_filter($classes, 'is_element_empty');
+  }
+
 }
 
 /**
- * Remove the id="" on nav menu items
- * Return 'menu-slug' for nav menu classes
+ * Compare two urls. Returns boolean.
  */
-function roots_nav_menu_css_class($classes, $item) {
-  $slug = sanitize_title($item->title);
-  $classes = preg_replace('/(current(-menu-|[-_]page[-_])(item|parent|ancestor))/', 'active', $classes);
-  $classes = preg_replace('/^((menu|page)[-_\w+]+)+/', '', $classes);
+function roots_url_compare($url, $rel) {
+  $url = trailingslashit($url);
+  $rel = trailingslashit($rel);
 
-  $classes[] = 'menu-' . $slug;
-
-  $classes = array_unique($classes);
-
-  return array_filter($classes, 'is_element_empty');
+  if ((strcasecmp($url, $rel) === 0) || roots_root_relative_url($url) == $rel) { 
+    return true; 
+  } else {
+    return false;
+  }
 }
-add_filter('nav_menu_css_class', 'roots_nav_menu_css_class', 10, 2);
-add_filter('nav_menu_item_id', '__return_null');
 
 /**
  * Clean up wp_nav_menu_args
  *
  * Remove the container
  * Use Roots_Nav_Walker() by default
+ * Remove the id="" on nav menu items
  */
 function roots_nav_menu_args($args = '') {
   $roots_nav_menu_args['container'] = false;
@@ -91,3 +127,4 @@ function roots_nav_menu_args($args = '') {
   return array_merge($args, $roots_nav_menu_args);
 }
 add_filter('wp_nav_menu_args', 'roots_nav_menu_args');
+add_filter('nav_menu_item_id', '__return_null');
