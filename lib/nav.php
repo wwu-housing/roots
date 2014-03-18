@@ -54,6 +54,12 @@ class Roots_Nav_Walker extends Walker_Nav_Menu {
 
     if ($element->is_dropdown) {
       $element->classes[] = 'dropdown';
+
+      foreach ($children_elements[$element->ID] as $child) {
+        if ($child->current_item_parent || roots_url_compare($this->archive, $child->url)) {
+          $element->classes[] = 'active';
+        }
+      }
     }
 
     $element->is_active = strpos($this->archive, $element->url);
