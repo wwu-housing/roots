@@ -1,0 +1,46 @@
+@import "base";
+
+.attribute-area {
+    font-size: 16px;
+    .attr {
+        display: inline-block;
+        margin-bottom: 3px;
+        .label {
+            font-family: @OpenSans;
+            font-weight: 400;
+        }
+        .label-default {
+            background-color: #666;
+        }
+    }
+}
+#restaurants {
+    display: none;
+    .restaurant {
+        position: relative;
+
+        h4 {
+            padding-right: 30px;
+        }
+        .price {
+            position: absolute;
+            top: @padding-large-vertical;
+            right: @padding-large-horizontal;
+        }
+        .dist {
+            float: right;
+        }
+        p.lower {
+            margin-bottom: @padding-small-vertical;
+        }
+        .attr {
+            line-height: 21px;
+        }
+        .tel a {
+            color: #666;
+            &:hover, &:focus {
+                text-decoration: none;
+            }
+        }
+    }
+}

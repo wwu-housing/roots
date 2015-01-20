@@ -1,0 +1,97 @@
+@import "../main";
+
+#body-container {
+    padding-bottom: 20px;
+}
+#main {
+    padding-top: 0;
+}
+.back-to-top {
+    position: fixed;
+    z-index: 60;
+    top: 15px;
+    right: 25px;
+    background: @lblue;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 0;
+    font-size: 14px;
+    font-weight: 600;
+
+    &:hover, &:focus {
+        color: #fff;
+        box-shadow: none;
+    }
+}
+#guest-resources-nav-container {
+    color: #fff;
+    @media (min-width: (@screen-sm + 1)) {
+        background: @bay-blue;
+    }
+    margin-bottom: 0;
+    min-height: 40px;
+    border: none;
+    position: relative;
+    z-index: 70;
+
+    .navbar-header {
+        background: @western-blue;
+        @media (min-width: (@screen-sm + 1)) {
+            margin-left: -15px;
+            padding-left: 15px;
+        }
+
+        a.navbar-brand {
+            color: inherit;
+            padding: 15px 15px;
+            @media (min-width: (@screen-sm + 1)) {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+            height: 60px;
+            .guest-base:not(.guest-home) & {
+                height: 50px;
+            }
+        }
+        .navbar-toggle {
+            padding-top: 14px;
+            padding-bottom: 14px;
+            .icon-bar {
+                background-color: #fff;
+            }
+            .guest-base:not(.guest-home) & {
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+        }
+        img {
+            background: transparent;
+        }
+    }
+
+    #guest-resources-nav {
+        max-height: 100%;
+        background: @bay-blue;
+
+        .nav {
+            @media (max-width: @screen-sm) {
+                margin-top: 15px;
+                margin-bottom: 15px;
+            }
+        }
+
+        a {
+            color: inherit;
+            font-family: @OpenSans;
+            font-size: 18px;
+            padding: 10px 25px;
+            @media (min-width: (@screen-sm + 1)) {
+                padding: 20px 15px;
+            }
+        }
+
+        .nav > li > a:hover, .nav > li > a:focus {
+            background: @lblue;
+        }
+    }
+}

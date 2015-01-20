@@ -1,0 +1,45 @@
+@experimental-support-for-opera: false;
+@experimental-support-for-khtml: false;
+@import "_css3";
+
+.background-gradient(@direction, @start, @end) {
+    background-color: mix(@start, @end);
+    background: -webkit-linear-gradient(@direction, @start, @end);
+    background: -moz-linear-gradient(@direction, @start, @end);
+    background: -o-linear-gradient(@direction, @start, @end);
+    background: linear-gradient(@direction, @start, @end);
+}
+.background-cover(@url) { // be sure to specify a fallback color
+    background-image: url(@url);
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    -webkit-background-size: cover;
+       -moz-background-size: cover;
+         -o-background-size: cover;
+            background-size: cover;
+
+        filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.#{@url}', sizingMethod='scale');
+    -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='#{@url}', sizingMethod='scale')";
+}
+.transition-properties(...) {
+    @props: ~`"@{arguments}".replace(/[\[\]]/g, '')`;
+    -webkit-transition-property: @props;
+    -moz-transition-property: @props;
+    -o-transition-property: @props;
+    transition-property: @props;
+}
+.transition-duration(...) {
+    @props: ~`"@{arguments}".replace(/[\[\]]/g, '')`;
+    -webkit-transition-duration: @props;
+    -moz-transition-duration: @props;
+    -o-transition-duration: @props;
+    transition-duration: @props;
+}
+.translateY(...) {
+    @props: ~`"@{arguments}".replace(/[\[\]]/g, '')`;
+    -webkit-transform: translateY(@props);
+       -moz-transform: translateY(@props);
+        -ms-transform: translateY(@props);
+            transform: translateY(@props);
+}

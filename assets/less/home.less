@@ -1,0 +1,109 @@
+/* ==========================================================================
+ * Home Page
+ * ========================================================================== */
+
+@import "main";
+
+/* ------
+ * Slider
+ * ------ */
+
+#carousel {
+    /* On the hope that height might one day be transition-able. */
+    .transition(height 800ms);
+    max-height: 200px;
+    min-height: 87px;
+    overflow: hidden;
+    @media (max-width: 767px) { /* small and below */
+        min-height: 0;
+    }
+}
+.carousel-inner {
+    max-width: 1170px;
+    min-width: 100%;
+}
+.carousel-indicators,
+.carousel-caption {
+    top: 0.8em;
+    right: 1em;
+    left: auto;
+    text-align: right;
+}
+.carousel {
+    .item { /* adds fade transition */
+        .transition(opacity 800ms);
+    }
+    .active.left {
+        left:0;
+        opacity:0;
+        z-index:2;
+    }
+    .next {
+        left:0;
+        opacity:1;
+        z-index:1;
+    }
+}
+
+/* -------
+ * Content
+ * ------- */
+
+.home {
+    #sidebar li,
+    #right-sidebar li {
+        font-size: 15px;
+        padding-bottom: 0.2em;
+    }
+    #main .page-header {
+        border-bottom: none;
+        margin-bottom: 0;
+        h2 {
+            margin-bottom: 0.6em;
+        }
+    }
+}
+
+/* --------
+ * Calendar
+ * -------- */
+
+.calendar {
+    .media {
+        overflow: visible;
+    }
+    .date {
+        width: 4em;
+        height: 4em;
+        text-align: center;
+        background-color: #bad80a;
+        .box-shadow(0 1px 1px rgba(0, 0, 0, 0.4));
+
+        &:hover,
+        &:focus,
+        &:active {
+            text-decoration: none;
+        }
+    }
+    .month,
+    .day {
+        display: block;
+    }
+    .month {
+        color: #000;
+        font-weight: 500;
+        font-size: 0.9em;
+        line-height: 0.25em;
+        padding-top: 0.9em;
+    }
+    .day {
+        color: #222;
+        font-size: 2em;
+        font-weight: 500;
+        padding-top: 0.1em;
+    }
+    .media-heading {
+        margin-bottom: 0;
+    }
+}
+

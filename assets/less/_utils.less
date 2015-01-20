@@ -1,0 +1,85 @@
+// Image replacement
+.ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    /* IE 6/7 fallback */
+    *text-indent: -9999px;
+    &:before {
+        content: "";
+        display: block;
+        width: 0;
+        height: 150%;
+    }
+}
+
+// Hide from both screenreaders and browsers: h5bp.com/u
+.hidden, .keywords, .col-lg-0, .col-sm-0, {
+    display: none !important;
+    visibility: hidden;
+}
+
+// Add color/background to sr-only elements. Conforms to accessability
+// standards, as well as lets users who've disabled css see elements.
+.sr-only {
+    color: #fff;
+    background-color: #000;
+}
+
+// Hide visually and from screenreaders, but maintain layout
+.invisible { visibility: hidden; }
+
+// For IE 6/7 only
+// Include this rule to trigger hasLayout and contain floats.
+.clearfix { *zoom: 1; }
+
+// Nice css loading animation element
+.loader {
+    width: 24px;
+    height: 24px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+    &:before {
+        display: block;
+
+        width: inherit;
+        height: inherit;
+
+        border-top: 2px solid #333;
+        border-right: 2px solid #fff;
+
+        content: "";
+
+        -webkit-animation: spin 1s cubic-bezier(0.480, 0.175, 0.515, 0.850) infinite;
+           -moz-animation: spin 1s cubic-bezier(0.480, 0.175, 0.515, 0.850) infinite;
+                animation: spin 1s cubic-bezier(0.480, 0.175, 0.515, 0.850) infinite;
+        border-radius: 100%;
+    }
+}
+@-webkit-keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@-moz-keyframes spin {
+    100% {
+        -moz-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@-ms-keyframes spin {
+    100% {
+        -ms-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+

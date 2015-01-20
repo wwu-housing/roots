@@ -1,0 +1,64 @@
+@import "base";
+
+#main {
+    overflow: hidden;
+}
+
+#mapContainer {
+    #map {
+        height: 100%;
+    }
+
+    height: 400px;
+    z-index: 20;
+
+    .codeIcon,
+    .campus-map-atm-icon,
+    .campus-map-food-icon {
+        text-align: center;
+        font-weight: 600;
+        text-shadow: 0px 1px 0px white, 0px -1px 0px white, 1px 0px 0px white, -1px 0px 0px white;
+    }
+    .codeIcon {
+        font-family: @OpenSans;
+    }
+    .campus-map-atm-icon {
+        font-weight: 800;
+        font-size: 14px;
+    }
+    .campus-map-food-icon {
+        font-size: 14px;
+    }
+
+    .leaflet-popup-close-button {
+        display: none;
+    }
+    .leaflet-popup-content-wrapper {
+        border-radius: 2px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+
+        .leaflet-popup-content {
+            font-size: 12px;
+            margin: 5px 10px;
+            font-family: @PTSerif;
+        }
+    }
+
+    @media (max-width: @screen-sm) {
+        margin-left: -15px;
+        margin-right: -15px;
+        position: fixed;
+        top: 0px;
+        width: 100%;
+        height: 50%;
+        border-bottom: 10px solid @bay-blue;
+    }
+}
+
+#geoInfo {
+    .geo {
+        text-decoration: underline;
+        color: @lblue;
+        cursor: pointer;
+    }
+}

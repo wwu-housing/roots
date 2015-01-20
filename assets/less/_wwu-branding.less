@@ -1,0 +1,251 @@
+@import "_variables";
+@import "_functions";
+
+.barebones .wwu-logo-img.hidden-xs {
+    max-height: 102px;
+}
+
+#wwu-links {
+    margin-bottom: 0;
+    min-height: 0;
+    position: static;
+    @media (max-width: @screen-sm) {
+        margin-bottom: 0;
+        padding-left: 0;
+        padding-right: 0;
+
+        form {
+            margin-top: 0;
+            padding: 0 15px;
+        }
+        .pull-right { float: none !important; }
+        span.visible-xs {
+            display: inline !important;
+            padding-right: 1em;
+        }
+    }
+    @media (max-width: @screen-md) {
+        label { display: inline; }
+        .nav-collapse .nav > li > a {
+            padding-top: 0.4em;
+            padding-bottom: 0.4em;
+            margin-bottom: 0;
+
+            &:hover,
+            &:active,
+            &:focus {
+                background: inherit;
+            }
+            & i {
+                display: inline-block !important;
+                margin-right: 0.5em;
+                opacity: 0.7;
+            }
+            &:hover i,
+            &:active i,
+            &:focus i {
+                opacity: 1;
+            }
+        }
+    }
+    @media (min-width: (@screen-sm + 1)) { /* above small */
+        .nav > li {
+            &:last-child > a {
+                padding-right: 1em;
+            }
+            &:last-child > a:after {
+                content: none;
+                padding: 0;
+            }
+            > a {
+                padding: 1em 0;
+
+                &:after {
+                    content: '\2022';
+                    padding: 0 .8em;
+                }
+                &:hover,
+                &:active,
+                &:focus {
+                    background-color: transparent;
+                }
+                &:hover:after,
+                &:active:after,
+                &:focus:after {
+                    color: #777;
+                }
+            }
+        }
+        #search-popover {
+            .border-radius(0px);
+            .box-shadow(none);
+            filter: none;
+            color: #fff;
+            background-color: @lblue;
+            border-color: @lblue;
+            margin: 0;
+            height: 3em;
+            padding-top: 0.9em;
+            z-index: 30;
+            margin-top: -0.275em;
+            position: relative;
+            + .popover {
+                width: 250px;
+                right: 3.3em;
+                left: auto !important;
+                .arrow {
+                    right: 8px;
+                    left: auto;
+                }
+                .checkbox {
+                    margin-top: 0;
+                }
+            }
+        }
+        .nav-collapse {
+            position: relative;
+        }
+    }
+}
+.navbar #wwu-vent {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+#wwu-logo {
+    background-color: @western-blue;
+    position: relative;
+    top: -0.375em;
+    z-index: 15;
+    padding: 0;
+    @media (max-width: @screen-sm) {
+        top: 0;
+        height: auto;
+        text-align:center;
+        margin-bottom: -2px;
+        overflow: hidden;
+    }
+}
+.wwu-logo-position {
+    margin-bottom: 10px;
+    .box-shadow(rgba(0, 0, 0, 0.5) 0 1px 10px);
+    padding-bottom: 10px;
+    width: 218px;
+    position: absolute;
+    background-color: @western-blue;
+    left: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.wwu-logo-img {
+    background-color: inherit;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#wwu-vent .icon-bar { background-color: #fff; }
+
+#wwu-header {
+    position: relative;
+    z-index: 15;
+}
+
+#wwu-footer {
+    .background-gradient(top, #3a5a8f, @western-blue);
+    color: #fff;
+    position: relative;
+    top: -1.813em;
+    padding-left: 0;
+    padding-right: 0;
+    margin: 0;
+
+    .wwu-contact-icon {
+        display: inline-block;
+        width: 12px;
+        margin: 0.25em 0.5em;
+        color: @spot-yellow;
+        font-size: 12px;
+    }
+
+    #wwu-footer-title {
+        background-color: #fff;
+        color: @western-blue;
+        display: block;
+        .box-shadow(#555 0 0 7px);
+    }
+    #wwu-footer-title h3 {
+        font-weight: 600;
+        font-size: inherit;
+        margin: 0 0 1em;
+        padding: 0.65em 0.5em 0.4em;
+        text-align: center;
+        font-family: @OpenSans;
+        text-transform: uppercase;
+    }
+    address span {
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    #wwu-social-media-links {
+        margin-top: @padding-large-vertical;
+    }
+    .wwu-social-media {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        margin-right: 2px;
+        background: url("https://cse.wwu.edu/sites/all/themes/wwuzen/images/westernIcons-sd8c13cd9e2.png") no-repeat;
+
+        &.facebook {
+            background-position: 0 -120px;
+        }
+        &.flickr {
+            background-position: 0 -96px;
+        }
+        &.twitter {
+            background-position: 0 -72px;
+        }
+        &.youtube {
+            background-position: 0 -24px;
+        }
+        &.gplus {
+            background-position: 0 0;
+        }
+        &.rss {
+            background-position: 0 -48px;
+        }
+    }
+
+    p {
+        clear: both;
+    }
+    a { color: #fff; }
+    #wwu-contact { margin-left: 0.5em; }
+    @media (max-width: @screen-sm) {
+        top: 0;
+    }
+}
+
+.lt-ie9 #wwu-footer #wwu-footer-title {
+    border: 1px solid;
+    border-bottom: none;
+}
+#wwu-social-media-links {
+    margin-left: 0.5em;
+    a img { margin: 0.25em 0.5em 0.25em 0; }
+}
+
+@media (max-width: @screen-sm) {
+    .wwu-logo-position {
+        min-height: 36px;
+        margin-top: -10px;
+        margin-bottom: -10px;
+        padding-bottom: 0;
+        width: auto;
+        position: relative;
+        left: 0;
+    }
+}

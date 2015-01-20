@@ -1,0 +1,886 @@
+/* ***************************************************
+ * WWU University Residences CSS style guide
+ *
+ * - Major and minor sections are titled as shown in this file.
+ * - Selectors with one rule can be displayed on a single line with curly
+ *   braces spaced.
+ * - Related rules do not have a blank line between them.
+ *
+ * *************************************************** */
+
+@import "_variables";
+@import "_functions";
+
+// TODO: override any bootstrap constants here
+@text-color: #333;
+@brand-primary: @western-blue;
+@link-color: @lblue;
+@font-family-sans-serif: @OpenSans;
+@font-family-serif: @PTSerif;
+
+/* ==========================================================================
+ * HTML5 Boilerplate - Base styles: opinionated defaults
+ * ========================================================================== */
+
+html,
+button,
+input,
+select,
+textarea {
+    color: #333;
+    background: #fff;
+    font-family: @OpenSans;
+}
+
+body {
+    line-height: 18px;
+    border-top: 0.375em solid @lblue;
+    font-family: @PTSerif;
+    font-size-adjust: auto; /* make fallback fonts the same size */
+}
+
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+::-moz-selection {
+    background: @spot-yellow;
+    text-shadow: none;
+}
+::selection {
+    background: @spot-yellow;
+    text-shadow: none;
+}
+
+/*
+ * Remove the gap between images and the bottom of their containers: h5bp.com/i/440
+ */
+img { vertical-align: middle; }
+
+/* Chrome Frame prompt */
+.chromeframe {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+:focus { outline: 1px dotted; }
+
+/* ==========================================================================
+ * General Styles: Basic html elements and globally available classes
+ * ========================================================================== */
+
+/* -------------
+ * Text Elements
+ * ------------- */
+
+h1 {
+    line-height: 1.1em;
+}
+h2 {
+    line-height: 1em;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+h3 {
+    font-size: 1.3em;
+}
+h4 {
+    font-size: 1.1em;
+}
+
+a {
+    .transition-properties(font-weight, color);
+    .transition-duration(200ms, 100ms);
+
+    h3 &,
+    h2 & {
+        color: inherit;
+        text-decoration: none;
+    }
+    h3 &:hover,
+    h3 &:focus,
+    h2 &:hover,
+    h2 &:focus {
+        text-decoration: underline;
+    }
+
+    &.skip {
+        .transition-properties(padding, max-height);
+        .transition-duration(200ms, 200ms);
+    }
+    &.skip.sr-only {
+        right: 2em;
+        margin: 0 auto;
+        background: @western-blue;
+        color: #fff;
+        text-align: center;
+        display: block;
+        height: auto;
+        width: auto;
+        padding: 0 1.3em;
+        max-height: 1px;
+        z-index: 1000;
+    }
+    &.skip.sr-only:focus,
+    &.skip.sr-only:active {
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+        max-height: 40px;
+        clip: auto;
+    }
+}
+
+ol.arabic { list-style: decimal; }
+ol.loweralpha { list-style: lower-alpha; }
+ol.upperalpha { list-style: upper-alpha; }
+ol.lowerroman { list-style: lower-roman; }
+ol.upperroman { list-style: upper-roman; }
+ol.lowergreek { list-style: lower-greek; }
+ul.list-unstyled li,
+ol.list-unstyled li { list-style-image: none; }
+
+p.lead { font-size: 1.3em; }
+
+#main ul:not(.dropdown-menu):not(.nav) li {
+    list-style-image: url("/images/small_arrow.gif");
+    padding-bottom: 1px;
+}
+#main .nav {
+    margin-bottom: 10px;
+    li {
+        padding-bottom: 0;
+    }
+}
+.home ul {
+    padding-left: 0;
+    li { list-style: none outside none; }
+}
+
+address {
+    margin-bottom: (@line-height-computed / 2);
+}
+
+#body-container {
+    position: relative;
+    z-index: 50;
+
+    li a:after {
+        top: -0.1em;
+        bottom: -0.1em;
+    }
+    ul > li:first-child a:after { top: -0.5em; }
+    ul > li:last-child a:after { bottom: -0.5em; }
+
+    /* Increase tappable area of links, so they're easier to hit on mobile. */
+    a {
+        position: relative;
+
+        &:after {
+            content: '';
+            position: absolute;
+        }
+        // Uncomment if you want to visually see new tappable area.
+        // &:hover:after,
+        // &:focus:after {
+        //     background: rgba(0, 131, 214, 0.1);
+        //     border-radius: 1em;
+        //     border: 2px solid rgba(0, 131, 214, 0.2)
+        // }
+    }
+    p a:after {
+        top: -0.5em;
+        bottom: -0.5em;
+        left: -0.5em;
+        right: -0.5em;
+    }
+}
+
+dl { -webkit-margin-before: 0; }
+dd {
+    margin-left: @padding-base-horizontal;
+}
+dt, dd {
+    padding-top: @padding-base-vertical;
+}
+
+/*a[href^="http://"]:not([href*="housing.wwu.edu"]),
+a[href^="https://"]:not([href*="housing.wwu.edu"]),
+a[href^="//"]:not([href*="housing.wwu.edu"]) {
+    #body-container &, // this targets links pointing to domains outside of housing.wwu.edu (external)
+    #main-nav & {
+        &:after {
+            content: "\e066";
+            padding-left: 0.6em;
+            padding-top: 0.9em;
+            font-family: 'Glyphicons Halflings';
+            font-size: 75%;
+            opacity: 0.7;
+        }
+        &:focus:after,
+        &:hover:after {
+            opacity: 1;
+        }
+    }
+}*/
+
+a.no-ext-icon,
+a.external.image-reference {
+    &:after,
+    #body-container &:after,
+    #main-nav &:after {
+        content: none;
+        padding-left: inherit;
+    }
+}
+
+@media (max-width: @screen-sm) {
+    a[href^="tel:"] {
+        font-weight: 700;
+    }
+}
+
+.tel {
+    display: inline-block;
+}
+
+.link {
+    color: @link-color;
+    cursor: pointer;
+    &:hover, &:focus {
+        color: @link-hover-color;
+        text-decoration: underline;
+    }
+}
+
+.text-monospace {
+    font-family: @font-family-monospace;
+}
+
+.modal-backdrop {
+    z-index: 1000;
+}
+
+/* -----------------
+ * Non-text Elements
+ * ----------------- */
+
+html { background: @western-blue; }
+
+img {
+    color: #222;
+    background: #fff;
+    max-width: 100%;
+}
+
+header { position: relative; }
+
+noscript { display: block; }
+
+/* Default table style. */
+// TODO: Move to less
+table {
+    width: 100%;
+    margin-bottom: 20px;
+
+    th, td {
+        padding: 8px;
+        line-height: 20px;
+        text-align: left;
+        vertical-align: top;
+        border-top: 1px solid #ddd;
+    }
+    th { font-weight: 700; }
+    thead th { vertical-align: bottom; }
+    caption + thead tr:first-child th,
+    caption + thead tr:first-child td,
+    colgroup + thead tr:first-child th,
+    colgroup + thead tr:first-child td,
+    thead:first-child tr:first-child th,
+    thead:first-child tr:first-child td { border-top: 0; }
+    tbody + tbody { border-top: 2px solid #ddd; }
+    .table { background-color: #fff; }
+    table { background-color: #fff; }
+    tbody {
+        tr.success > td { background-color: #dff0d8; }
+        tr.error > td { background-color: #f2dede; }
+        tr.warning > td { background-color: #fcf8e3; }
+        tr.info > td { background-color: #d9edf7; }
+    }
+
+    // Undo default table style.
+    &.nostyle th,
+    &.nostyle td {
+        padding: 4px 8px;
+        line-height: 20px;
+        text-align: left;
+        vertical-align: top;
+        border-top: none;
+    }
+    &.nostyle tbody + tbody { border-top: none; }
+    &.nostyle .table { background-color: transparent; }
+    &.nostyle table { background-color: transparent; }
+}
+table.sortable th {
+    cursor: pointer;
+}
+
+/* -------------
+ * Form Elements
+ * ------------- */
+
+a.btn {
+    font-family: @OpenSans;
+}
+.form-inline {
+    .btn { vertical-align: bottom; }
+}
+#sidebar .help-block {
+    font-size: @font-size-small;
+    line-height: @line-height-small;
+}
+
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+input[type="range"],
+input[type="file"],
+.uneditable-input { max-width: 100%; }
+.input-xs {
+    padding: 1px 5px;
+    height: 1.8em;
+    font-size: 12px;
+}
+
+#id_honeypot { display: none; }
+
+/* Date form item */
+.multitime {
+    width: 100%;
+    #id_password_0 {
+        width: 7em;
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+    #id_password_1 {
+        width: 3.8em;
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+    #id_password_2 {
+        width: 5.5em;
+    }
+}
+
+.datepicker-dropdown {
+    z-index: 50 !important;
+}
+
+/* --------------
+ * Custom classes
+ * -------------- */
+
+.video-wrapper {
+    position: relative;
+    height: 0;
+
+    iframe {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+    }
+}
+iframe.youtube { max-width: 100%; }
+
+.selected { font-weight: 700; }
+
+.help-block { margin-bottom: 15px; }
+
+.space-top { margin-top: @padding-base-vertical; }
+.no-space-top { margin-top: 0; padding-top: 0; }
+.no-space-bottom { margin-bottom: 0; padding-bottom: 0; }
+
+.btn-ur {
+    .border-radius(0);
+    background: @bay-blue;
+    margin: 0;
+    height: 40px;
+    color: #fff;
+    z-index: 40;
+    border-color: @bay-blue;
+    position: relative;
+    vertical-align: top;
+    white-space: nowrap;
+    .transition(top 200ms ease-in-out);
+
+    &:hover,
+    &:focus,
+    &:active { background-color: @lblue; }
+}
+
+.form-alert {
+    margin-bottom: @padding-small-vertical;
+}
+
+img.align-right {
+    float: right;
+    border-left: 1em solid #fff;
+}
+img.align-left {
+    float: left;
+    border-right: 1em solid #fff;
+}
+img.wide {
+    width: 100%;
+    margin-bottom: @line-height-computed;
+}
+
+.pager {
+    font-family: @OpenSans;
+}
+
+.checkbox, .radio {
+    line-height: 11px;
+    & + .help-block {
+        margin-top: -10px;
+    }
+}
+input[type="radio"], input[type="checkbox"] {
+    margin-top: 0;
+}
+
+.panel-body {
+    .row {
+        padding-top: @padding-large-vertical;
+        margin-top: -15px;
+        margin-bottom: -15px;
+
+        .form-group:last-child {
+            margin-bottom: 0;
+            .checkbox:last-child, .radio:last-child {
+                margin-bottom: 0;
+            }
+        }
+        form & {
+            margin-top: inherit;
+            margin-bottom: inherit;
+        }
+    }
+}
+
+.indent {
+    margin-left: 1em;
+}
+
+.label-group .label {
+    display: inline-block;
+    margin-bottom: floor((@padding-small-vertical/2));
+}
+.label + .label {
+    margin-left: 0.5em;
+}
+.label a {
+    color: #fff;
+    &:hover {
+        color: @gray-lighter;
+        text-decoration: none;
+    }
+}
+
+.alert {
+    margin-bottom: 15px;
+    ul {
+        padding-left: 1.6em;
+        #main & li:last-child,
+        li:last-child {
+            padding-bottom: 0;
+        }
+    }
+}
+
+.columns {
+    -webkit-column-gap: 15px;
+    -moz-column-gap: 15px;
+    column-gap: 15px;
+    @media (min-width: (@screen-sm + 1)) { /* above small */
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
+        padding-left: 0;
+    }
+    @media (min-width: (@screen-md + 1)) {
+        -webkit-column-count: 3;
+        -moz-column-count: 3;
+        column-count: 3;
+        padding-left: 0;
+    }
+}
+/* ==========================================================================
+ * UR Website Specific Styles
+ *
+ * Ordered from html top to bottom.
+ * ========================================================================== */
+
+/* ------
+ * Header
+ * ------ */
+
+#ur-vent .icon-bar { background-color: #fff; }
+#ur-head-container {
+    position: relative;
+    z-index: 10;
+    @media (min-width: (@screen-sm + 1)) { /* above small */
+        margin-left: 0;
+        margin-right: 0;
+        > .col-xs-12 {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+}
+.home-icon {
+    position: relative;
+    font-size: 0.6em;
+    margin-top: 0.4em;
+    color: #999;
+
+    &:hover,
+    h1:hover & { color: #eee; }
+
+    @media (max-width: @screen-sm) {
+        margin-left: 40px;
+    }
+}
+
+#ur-title.page-header {
+    margin: 0;
+    padding-bottom: 0;
+    border-bottom: 0;
+    z-index: 20;
+    small { color: #ccc; }
+    @media (max-width: @screen-md) {
+        bottom: 0;
+    }
+    &.with-slider {
+        @media (min-width: (@screen-sm + 1)) { /* above small */
+            position: absolute;
+        }
+    }
+}
+#slider {
+    overflow: hidden;
+    max-height: 200px;
+    min-height: 87px;
+
+    img {
+        width: 100%;
+        overflow: hidden;
+        background-position: center bottom;
+        background-repeat: repeat-x;
+    }
+    @media (max-width: @screen-sm) {
+        display: none;
+    }
+}
+#ur-title {
+    display: table;
+    width: 100%;
+    bottom: 20px;
+    right: 0;
+    color: #fff;
+    text-align: right;
+    //height: 60px;
+    font-family: @OpenSans;
+
+    & > h1 {
+        display: table-cell;
+        vertical-align: middle;
+        height: inherit;
+        font-size: 2.3em;
+        @media (max-width: @screen-xs) {
+            font-size: 1.6em;
+        }
+    }
+    a {
+        color: #fff;
+        font-weight: 400;
+        background-color: #000;
+        background-color: rgba(0, 0, 0, 0.75);
+        filter: progid:DXImageTransform.Microsoft.gradient(
+            startColorstr='#bf000000',
+            endColorstr='#bf000000',
+            GradientType=0); /* IE6-9 */
+        padding: 0.3em 0.5em;
+        display: block;
+
+        &:hover,
+        &:focus {
+            text-decoration: none;
+        }
+    }
+    @media (max-width: @screen-sm) {
+        height: auto;
+        &.with-slider {
+            position: relative;
+            text-align: center;
+        }
+        > h1 {
+            margin: 0;
+            font-size: 1.8em;
+        }
+        > h1 small { margin-top: 0.3em; }
+    }
+}
+
+/* ----------
+ * Navigation - see navigation.css
+ * ---------- */
+
+.webapp-back {
+    position: fixed;
+    top: 75px;
+    right: 0;
+    background: @bay-blue;
+    z-index: 200;
+    text-align: center;
+    a {
+        width: 40px;
+        display: block;
+    }
+    span {
+        color: #fff;
+        padding-top: 11px;
+        padding-bottom: 13px;
+    }
+}
+
+/* --------
+ * User Bar
+ * -------- */
+
+#user {
+    .user-content {
+        background: #ccc;
+        padding: 0.4em 0.6em;
+        text-align: right;
+        vertical-align: middle;
+    }
+    .info { text-align: left; }
+    form {
+        margin-bottom: 0;
+        display: inline-block;
+
+        label {
+            margin-bottom: 0;
+            font-weight: normal;
+        }
+        input {
+            width: auto;
+            display: inline-block;
+        }
+    }
+    @media (max-width: @screen-sm) {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    @media (min-width: (@screen-sm + 1)) { /* above small */
+        .navbar-text {
+            margin-top: 14px;
+        }
+    }
+}
+
+/* ---------
+ * Container
+ * --------- */
+
+#body-container {
+    margin-bottom: 20px;
+    margin-top: 10px;
+    &:focus {
+        outline: 0;
+    }
+}
+
+/* -------
+ * Sidebar
+ * ------- */
+
+#right-sidebar { z-index: 0; }
+.subnav {
+    font-family: @OpenSans;
+    padding: 0;
+    li {
+        list-style: none;
+        a {
+            display: block;
+            background: #eee;
+            margin: 0 0 0.2em;
+            padding: 0.4em 0.6em;
+            font-size: 1.1em;
+        }
+    }
+}
+#sidebar, #right-sidebar {
+    z-index: 5;
+    @media (max-width: @screen-sm) {
+        margin-top: 0;
+    }
+}
+
+/* -------
+ * Content
+ * ------- */
+
+.rst-container {
+    width: auto;
+    padding: 0;
+}
+.tab-content .tab-pane .section:first-child h2:first-child,
+.tab-content .tab-pane .section:first-child h3:first-child,
+.tab-content .tab-pane .section:first-child h4:first-child,
+.tab-content .tab-pane .section:first-child h5:first-child,
+.tab-content .tab-pane .section:first-child h6:first-child {
+    margin-top: 0;
+}
+
+#main {
+    word-wrap: break-word;
+    z-index: 10;
+
+    .row {
+        > h2,
+        > h3,
+        > h4,
+        > h5,
+        > h6 {
+            margin-left: 15px;
+            margin-right: 15px;
+        }
+        + #tabs {
+            margin-top: @line-height-computed;
+        }
+    }
+
+    h3.panel-title {
+        border-bottom: none;
+        margin-bottom: 0;
+    }
+    .page-header {
+        padding-bottom: 0;
+        margin: 0;
+        border-bottom: 0;
+        h2 {
+            margin-top: 15px;
+        }
+    }
+
+    /* Dropdown element styling */
+    /* The following help with smooth drop-downs on pages with .drop-down elements */
+    .drop-down {
+        margin-bottom: -1px;
+        padding-bottom: 1px;
+        h2, h3, h4, h5, h6 {
+            margin-bottom: 0;
+        }
+    }
+    .item { // force no collapse, so dropdowns don't "jump"
+        padding-top: 10px;
+        padding-bottom: 1px;
+        margin-bottom: -1px;
+        > :first-child {
+            margin-top: 0;
+            > :first-child {
+                margin-top: 0;
+            }
+        }
+    }
+}
+
+/* ------
+ * Footer
+ * ------ */
+
+#footer {
+    background-color: @western-blue;
+    padding-bottom: 1em;
+}
+#ur-footer {
+    color: #fff;
+    background-color: @western-blue;
+
+    p a { color: @spot-yellow; }
+
+    @media (max-width: @screen-sm) {
+         > div > div:first-child h3 {
+            margin-top: 0.5em;
+        }
+    }
+}
+/* ==========================================================================
+ * Page Specific Styles
+ *
+ * Avoid putting classes here. At some point they should always be split into
+ * their own css file.
+ * ========================================================================== */
+
+/* Gallery */
+.gallery { -webkit-overflow-scrolling: touch; }
+
+/* Bed styles */
+.bed-styles {
+    margin: 1em 0;
+    p {
+        font-weight: bold;
+        padding: 0.2em 0.5em 0.5em;
+        margin: 0;
+        text-align: center;
+    }
+}
+
+#body-container .rch-navigation a:after {
+    left: -0.1em;
+    right: -0.1em;
+}
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+
+@media (max-width: @screen-sm) {
+    header.container {
+        padding-left: 0;
+        padding-right: 0;
+        .row {
+            margin-right: 0;
+            margin-left: 0;
+        }
+    }
+}
+
+@media print,
+       (-o-min-device-pixel-ratio: 5/4),
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
+}
+
+@import "_wwu-branding";
+@import "_utils";
+@import "_print";
