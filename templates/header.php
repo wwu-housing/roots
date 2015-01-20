@@ -1,8 +1,8 @@
 <header class="container">
   <?php get_template_part('templates/wwu-header'); ?>
 
-  <div id="ur-head-container" role="banner">
-    <div id="ur-title" class="page-header {% block title_styles %}with-slider{% endblock %}">
+  <div id="ur-head-container" class="row" role="banner">
+    <div id="ur-title" class="page-header with-slider">
       <h1><a href="<?php echo esc_url(home_url('/')); ?>">
         <span class="pull-left home-icon col-md-offset-0 col-sm-offset-4 hidden-xs glyphicon glyphicon-home"></span>
         <?php bloginfo('name'); ?>
