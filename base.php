@@ -1,6 +1,5 @@
 <?php get_template_part('templates/head'); ?>
 <body <?php body_class(); ?>>
-
   <!--[if lt IE 8]>
     <div class="alert alert-warning">
       <?php _e('You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.', 'roots'); ?>
@@ -12,22 +11,26 @@
     get_template_part('templates/header');
   ?>
 
-  <div class="wrap container" role="document">
-    <div class="content row">
-      <main class="main" role="main">
+  <?php get_template_part('templates/navigation'); ?>
+
+  <div tabindex="0" id="body-container" class="container">
+    <section class="row">
+      <article class="<?php if (roots_display_sidebar()) : ?>col-sm-9<?php endif; ?>"
+          id="main" role="article" aria-live="polite" aria-atomic="true" role="main">
         <?php include roots_template_path(); ?>
-      </main><!-- /.main -->
+      </article>
+
       <?php if (roots_display_sidebar()) : ?>
-        <aside class="sidebar" role="complementary">
+        <aside id="right-sidebar" role="complementary"
+          class="col-sm-3">
           <?php include roots_sidebar_path(); ?>
-        </aside><!-- /.sidebar -->
+        </aside>
       <?php endif; ?>
-    </div><!-- /.content -->
-  </div><!-- /.wrap -->
+    </section>
+  </div>
 
   <?php get_template_part('templates/footer'); ?>
 
   <?php wp_footer(); ?>
-
 </body>
 </html>

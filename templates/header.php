@@ -1,21 +1,15 @@
-<header class="banner navbar navbar-default navbar-static-top" role="banner">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="<?php echo esc_url(home_url('/')); ?>"><?php bloginfo('name'); ?></a>
-    </div>
+<header class="container">
+  <?php get_template_part('templates/wwu-header'); ?>
 
-    <nav class="collapse navbar-collapse" role="navigation">
-      <?php
-        if (has_nav_menu('primary_navigation')) :
-          wp_nav_menu(array('theme_location' => 'primary_navigation', 'walker' => new Roots_Nav_Walker(), 'menu_class' => 'nav navbar-nav'));
-        endif;
-      ?>
-    </nav>
+  <div id="ur-head-container" role="banner">
+    <div id="ur-title" class="page-header {% block title_styles %}with-slider{% endblock %}">
+      <h1><a href="<?php echo esc_url(home_url('/')); ?>">
+        <span class="pull-left home-icon col-md-offset-0 col-sm-offset-4 hidden-xs glyphicon glyphicon-home"></span>
+        <?php bloginfo('name'); ?>
+      </a></h1>
+    </div>
+    <div id="slider">
+      <img src="http://placehold.it/1170x180" alt="Edens Hall South Wall">
+    </div>
   </div>
 </header>
