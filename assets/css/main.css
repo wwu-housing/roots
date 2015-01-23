@@ -7,7 +7,6 @@
  * - Related rules do not have a blank line between them.
  *
  * *************************************************** */
-/* Bootstrap overrides */
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
@@ -2795,10 +2794,10 @@ select[multiple].form-group-lg .form-control {
 fieldset[disabled] .btn {
   cursor: not-allowed;
   pointer-events: none;
+  filter: alpha(opacity=65);
   -webkit-opacity: 0.65;
   -moz-opacity: 0.65;
   opacity: 0.65;
-  filter: alpha(opacity=65);
   -webkit-box-shadow: none;
   box-shadow: none;
 }
@@ -5459,20 +5458,20 @@ a.list-group-item-danger.active:focus {
   line-height: 1;
   color: #000000;
   text-shadow: 0 1px 0 #ffffff;
+  filter: alpha(opacity=20);
   -webkit-opacity: 0.2;
   -moz-opacity: 0.2;
   opacity: 0.2;
-  filter: alpha(opacity=20);
 }
 .close:hover,
 .close:focus {
   color: #000000;
   text-decoration: none;
   cursor: pointer;
+  filter: alpha(opacity=50);
   -webkit-opacity: 0.5;
   -moz-opacity: 0.5;
   opacity: 0.5;
-  filter: alpha(opacity=50);
 }
 button.close {
   padding: 0;
@@ -5542,16 +5541,16 @@ button.close {
   background-color: #000000;
 }
 .modal-backdrop.fade {
+  filter: alpha(opacity=0);
   -webkit-opacity: 0;
   -moz-opacity: 0;
   opacity: 0;
-  filter: alpha(opacity=0);
 }
 .modal-backdrop.in {
+  filter: alpha(opacity=50);
   -webkit-opacity: 0.5;
   -moz-opacity: 0.5;
   opacity: 0.5;
-  filter: alpha(opacity=50);
 }
 .modal-header {
   padding: 15px;
@@ -5618,16 +5617,16 @@ button.close {
   font-size: 11px;
   font-weight: normal;
   line-height: 1.4;
+  filter: alpha(opacity=0);
   -webkit-opacity: 0;
   -moz-opacity: 0;
   opacity: 0;
-  filter: alpha(opacity=0);
 }
 .tooltip.in {
+  filter: alpha(opacity=90);
   -webkit-opacity: 0.9;
   -moz-opacity: 0.9;
   opacity: 0.9;
-  filter: alpha(opacity=90);
 }
 .tooltip.top {
   margin-top: -3px;
@@ -5926,10 +5925,10 @@ button.close {
   left: 0;
   bottom: 0;
   width: 15%;
+  filter: alpha(opacity=50);
   -webkit-opacity: 0.5;
   -moz-opacity: 0.5;
   opacity: 0.5;
-  filter: alpha(opacity=50);
   font-size: 20px;
   color: #ffffff;
   text-align: center;
@@ -5958,10 +5957,10 @@ button.close {
   outline: 0;
   color: #ffffff;
   text-decoration: none;
+  filter: alpha(opacity=90);
   -webkit-opacity: 0.9;
   -moz-opacity: 0.9;
   opacity: 0.9;
-  filter: alpha(opacity=90);
 }
 .carousel-control .icon-prev,
 .carousel-control .icon-next,
@@ -6377,6 +6376,7 @@ button.close {
     display: none !important;
   }
 }
+/* Bootstrap overrides */
 /* ==========================================================================
  * HTML5 Boilerplate - Base styles: opinionated defaults
  * ========================================================================== */
@@ -7220,18 +7220,10 @@ h1:hover .home-icon {
 #footer {
   background-color: #003f87;
   padding-bottom: 1em;
-}
-#ur-footer {
   color: #fff;
-  background-color: #003f87;
 }
-#ur-footer p a {
+#footer a {
   color: #ffc61e;
-}
-@media (max-width: 768px) {
-  #ur-footer > div > div:first-child h3 {
-    margin-top: 0.5em;
-  }
 }
 /* ==========================================================================
  * Page Specific Styles
