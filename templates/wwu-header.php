@@ -15,12 +15,12 @@ $MEDIA_URL = "https://housing.wwu.edu/apps/media/";
         <div class="navbar-header">
             <button id="wwu-vent" type="button" class="navbar-toggle btn-ur" data-toggle="collapse" data-target="#wwu-links-nav">
                 <span class="sr-only">Toggle WWU navigation</span>
-                <span class="glyphicon glyphicon-search"></span>
+                <!-- <span class="glyphicon glyphicon-search"></span> -->
             </button>
         </div>
 
         <nav class="collapse navbar-collapse" id="wwu-links-nav">
-            <form class="navbar-form form-inline visible-xs" role="search" method="get" action="http://gsa.ts.wwu.edu/search">
+            <!-- <form class="navbar-form form-inline visible-xs" role="search" method="get" action="http://gsa.ts.wwu.edu/search">
                 <input type="hidden" name="client" value="default_frontend">
                 <input type="hidden" name="output" value="=xml_no_dtd">
                 <input type="hidden" name="proxystylesheet" value="default_frontend">
@@ -64,7 +64,7 @@ $MEDIA_URL = "https://housing.wwu.edu/apps/media/";
                     id="search-popover" title="" href="#">
                     <span class="glyphicon glyphicon-search"><span class="sr-only">Search</span></span>
                 </a>
-            </span>
+            </span> -->
             <ul class="navbar-nav nav pull-right">
                 <li><a href="https://www.wwu.edu/academic_calendar"><span class="glyphicon glyphicon-calendar visible-xs"></span>Calendar</a></li>
                 <li><a href="https://www.wwu.edu/directory"><span class="glyphicon glyphicon-book visible-xs"></span>Directory</a></li>
