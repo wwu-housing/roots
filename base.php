@@ -15,7 +15,7 @@
 
   <div tabindex="0" id="body-container" class="container">
     <section class="row">
-      <article class="<?php if (roots_display_sidebar()) : ?>col-sm-9<?php endif; ?>"
+      <article class="col-sm-<?php if (roots_display_sidebar()) : ?>9<?php else: ?>12<?php endif; ?>"
           id="main" role="article" aria-live="polite" aria-atomic="true" role="main">
         <?php include roots_template_path(); ?>
       </article>
