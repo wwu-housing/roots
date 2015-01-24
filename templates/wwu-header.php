@@ -15,7 +15,7 @@ $MEDIA_URL = "https://housing.wwu.edu/apps/media/";
         <div class="navbar-header">
             <button id="wwu-vent" type="button" class="navbar-toggle btn-ur" data-toggle="collapse" data-target="#wwu-links-nav">
                 <span class="sr-only">Toggle WWU navigation</span>
-                <!-- <span class="glyphicon glyphicon-search"></span> -->
+                <span class="glyphicon glyphicon-search"></span>
             </button>
         </div>
 
